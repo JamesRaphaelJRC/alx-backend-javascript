@@ -8,7 +8,7 @@ Returns a Promise using this prototype `function getResponseFromAPI()`
 ## Task 1: [1-promise.js](https://github.com/JamesRaphaelJRC/alx-backend-javascript/blob/main/0x01-ES6_promise/1-promise.js)
 Returns a promise using the prototype
 
-`getFullResponseFromAPI(success)` The parameter is a boolean.
+    `getFullResponseFromAPI(success)` \\ The parameter is a boolean.
 
 When the argument is:
 
