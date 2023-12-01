@@ -44,3 +44,15 @@ Knowing that the functions in `utils.js` return promises, use the prototype belo
 
 In the event of an error, log `Signup system offline to the console`
 
+### Task 4: [4-user-promise.js](https://github.com/JamesRaphaelJRC/alx-backend-javascript/blob/main/0x01-ES6_promise/4-user-promise.js)
+Using the following prototype
+
+    function signUpUser(firstName, lastName) {
+    }
+
+Return a resolved promise with this object:
+
+{
+  firstName: value,
+  lastName: value,
+}
