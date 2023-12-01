@@ -56,3 +56,12 @@ Return a resolved promise with this object:
   firstName: value,
   lastName: value,
 }
+
+### Task 5: [5-photo-reject.js](https://github.com/JamesRaphaelJRC/alx-backend-javascript/blob/main/0x01-ES6_promise/5-photo-reject.js)
+Write and export a function named `uploadPhoto`. It should accept one argument fileName (string).
+
+The function should return a Promise rejecting with an Error and the string `$fileName cannot be processed`
+
+    export default function uploadPhoto(filename) {
+
+    }
