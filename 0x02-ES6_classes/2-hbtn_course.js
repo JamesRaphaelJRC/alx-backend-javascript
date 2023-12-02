@@ -31,9 +31,9 @@ export default class HolbertonCourse {
     this._length = newLength;
   }
 
-  // Getter for students
+  // Setter for students
   set students(newStudents) {
-    if (!(newStudents instanceof Array) && !newStudents.every((std) => typeof std === 'string')) {
+    if (!(newStudents instanceof Array) || !newStudents.every((std) => typeof std === 'string')) {
       throw new TypeError('Students must be an array');
     }
     this._students = newStudents;
