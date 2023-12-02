@@ -27,7 +27,7 @@ export default class Airport {
   }
 
   // String representation for Airport instances
-  toString() {
-    return `[${typeof (Object.getPrototypeOf(this))} ${this._code}]`;
+  get [Symbol.toStringTag]() {
+    return this._code;
   }
 }
