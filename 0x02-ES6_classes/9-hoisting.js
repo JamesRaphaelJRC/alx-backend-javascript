@@ -3,11 +3,9 @@ export class HolbertonClass {
     if (typeof year !== 'number') {
       throw new TypeError('Year must be a number');
     }
-
     if (typeof location !== 'string') {
       throw new TypeError('Location must be a string');
     }
-
     this._year = year;
     this._location = location;
   }
@@ -26,15 +24,12 @@ export class StudentHolberton {
     if (typeof firstName !== 'string') {
       throw new TypeError('Fisrt name must be a string');
     }
-
     if (typeof lastName !== 'string') {
       throw new TypeError('Last name must be a string');
     }
-
     if (!(holbertonClass instanceof HolbertonClass)) {
       throw new TypeError('holbertonClass must be an instance of HolbertonClass');
     }
-
     this._firstName = firstName;
     this._lastName = lastName;
     this._holbertonClass = holbertonClass;
@@ -48,8 +43,9 @@ export class StudentHolberton {
     return this._holbertonClass;
   }
 
-  fullStudentDescription() {
-    return `${this._firstName} ${this._lastName} - ${this._holbertonClass._year} - ${this._holbertonClass._location}`;
+  get fullStudentDescription() {
+    return `${this._firstName} ${this._lastName} - \
+  ${this._holbertonClass.year} - ${this._holbertonClass.location}`;
   }
 }
 
