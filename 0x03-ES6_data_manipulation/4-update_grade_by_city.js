@@ -21,16 +21,19 @@ export default function updateStudentGradeByCity(studentList, city, newGrades) {
   // Retrieve the students by their location
   const studentsInCity = getStudentsByLocation(studentList, city);
 
-  const newlist = studentsInCity.map((student) => {
-    for (const newGrade of newGrades) {
-      if (newGrade.studentId === student.id) {
-        student.grade = newGrade.grade; /* eslint-disable-line no-param-reassign */
-      }
-    }
-    if (!('grade' in student)) {
-      student.grade = 'N/A'; /* eslint-disable-line no-param-reassign */
-    }
+  const updatedStudents = studentsInCity.map((student) => {
+    const matchingGrade = newGrades.find((grade) => grade.studentId === student.id);
+    console.log(matchingGrade);
+    student.grade = matchingGrade ? matchingGrade.grade : 'N/A'; /* eslint-disable-line no-param-reassign */
+    // for (const newGrade of newGrades) {
+    //   if (newGrade.studentId === student.id) {
+    //     student.grade = newGrade.grade; /* eslint-disable-line no-param-reassign */
+    //   }
+    // }
+    // if (!('grade' in student)) {
+    //   student.grade = 'N/A'; /* eslint-disable-line no-param-reassign */
+    // }
     return student;
   });
-  return newlist;
+  return updatedStudents;
 }
