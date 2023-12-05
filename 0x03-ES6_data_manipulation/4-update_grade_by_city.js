@@ -8,21 +8,21 @@ import getStudentsByLocation from './2-get_students_by_loc';
  * newGrades - The student's new grade
  */
 export default function updateStudentGradeByCity(studentList, city, newGrades) {
-  if (!Array.isArray(studentList)) {
-    throw new TypeError('student list must be an array');
+  if (!Array.isArray(studentList) || !(studentList instanceof Array)) {
+    return [];
   }
   if (typeof city !== 'string' || city.length === 0) {
-    throw new TypeError('City must be a string');
+    return [];
   }
   if (!Array.isArray(newGrades) || typeof newGrades[0] !== 'object') {
-    throw new TypeError('newGrades must be an array of objects');
+    return [];
   }
 
   // Retrieve the students by their location
   const studentsInCity = getStudentsByLocation(studentList, city);
 
   const updatedStudents = studentsInCity.map((student) => {
-    // const matchingGrade = newGrades.find((grade) => grade.studentId === student.id);
+    // const matchingGrade = newGrades.find((gradeObj) => gradeObj.studentId === student.id);
     // student.grade = matchingGrade ? matchingGrade.grade : 'N/A';
     for (const newGrade of newGrades) {
       if (newGrade.studentId === student.id) {
