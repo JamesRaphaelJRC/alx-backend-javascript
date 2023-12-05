@@ -1,6 +1,6 @@
 export default function cleanSet(set, startString) {
   const matchingElements = [];
-  if (!(set instanceof Set)) {
+  if (!(set instanceof Set) && typeof startString !== 'string') {
     return '';
   }
   set.forEach((element) => {
