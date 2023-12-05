@@ -8,6 +8,9 @@ import getStudentsByLocation from './2-get_students_by_loc';
  * newGrades - The student's new grade
  */
 export default function updateStudentGradeByCity(studentList, city, newGrades) {
+  if (!Array.isArray(studentList)) { return [{}]; }
+  if (!Array.isArray(newGrades)) { return []; }
+
   // Retrieve the students by their location
   const students = getStudentsByLocation(studentList, city);
 
