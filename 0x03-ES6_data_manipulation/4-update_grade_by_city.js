@@ -11,28 +11,27 @@ export default function updateStudentGradeByCity(studentList, city, newGrades) {
   if (!Array.isArray(studentList)) {
     throw new TypeError('student list must be an array');
   }
-  if (typeof city !== 'string') {
+  if (typeof city !== 'string' || city.length === 0) {
     throw new TypeError('City must be a string');
   }
-  if (!Array.isArray(newGrades)) {
-    throw new TypeError('newGrades must be an array');
+  if (!Array.isArray(newGrades) || typeof newGrades[0] !== 'object') {
+    throw new TypeError('newGrades must be an array of objects');
   }
 
   // Retrieve the students by their location
   const studentsInCity = getStudentsByLocation(studentList, city);
 
   const updatedStudents = studentsInCity.map((student) => {
-    const matchingGrade = newGrades.find((grade) => grade.studentId === student.id);
-    console.log(matchingGrade);
-    student.grade = matchingGrade ? matchingGrade.grade : 'N/A'; /* eslint-disable-line no-param-reassign */
-    // for (const newGrade of newGrades) {
-    //   if (newGrade.studentId === student.id) {
-    //     student.grade = newGrade.grade; /* eslint-disable-line no-param-reassign */
-    //   }
-    // }
-    // if (!('grade' in student)) {
-    //   student.grade = 'N/A'; /* eslint-disable-line no-param-reassign */
-    // }
+    // const matchingGrade = newGrades.find((grade) => grade.studentId === student.id);
+    // student.grade = matchingGrade ? matchingGrade.grade : 'N/A';
+    for (const newGrade of newGrades) {
+      if (newGrade.studentId === student.id) {
+        student.grade = newGrade.grade; /* eslint-disable-line no-param-reassign */
+      }
+    }
+    if (!('grade' in student)) {
+      student.grade = 'N/A'; /* eslint-disable-line no-param-reassign */
+    }
     return student;
   });
   return updatedStudents;
