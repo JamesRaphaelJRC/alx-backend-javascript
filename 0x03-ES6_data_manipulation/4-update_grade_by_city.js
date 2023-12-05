@@ -11,17 +11,17 @@ export default function updateStudentGradeByCity(studentList, city, newGrades) {
   if (!Array.isArray(studentList)) {
     throw new TypeError('student list must be an array');
   }
+  if (typeof city !== 'string') {
+    throw new TypeError('City must be a string');
+  }
   if (!Array.isArray(newGrades)) {
     throw new TypeError('newGrades must be an array');
   }
-  if (newGrades.length < 1) {
-    return [];
-  }
 
   // Retrieve the students by their location
-  const students = getStudentsByLocation(studentList, city);
+  const studentsInCity = getStudentsByLocation(studentList, city);
 
-  const newlist = students.map((student) => {
+  const newlist = studentsInCity.map((student) => {
     for (const newGrade of newGrades) {
       if (newGrade.studentId === student.id) {
         student.grade = newGrade.grade; /* eslint-disable-line no-param-reassign */
