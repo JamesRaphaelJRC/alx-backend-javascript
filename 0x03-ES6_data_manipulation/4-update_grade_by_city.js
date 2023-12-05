@@ -1,5 +1,3 @@
-import getStudentsByLocation from './2-get_students_by_loc';
-
 /**
  * function updateStudentGradeByCity: returns an array of students for a
  *                     specific city with their new grade
@@ -18,8 +16,8 @@ export default function updateStudentGradeByCity(studentList, city, newGrades) {
     return [];
   }
 
-  // Retrieve the students by their location
-  const studentsInCity = getStudentsByLocation(studentList, city);
+  // Filter students by their location
+  const studentsInCity = studentList.filter((student) => student.location === city);
 
   const updatedStudents = studentsInCity.map((student) => {
     // const matchingGrade = newGrades.find((gradeObj) => gradeObj.studentId === student.id);
