@@ -2,7 +2,7 @@ interface TeacherAttributes {
     firstName: string;
     lastName: string;
     fullTimeEmployee: boolean;
-    yearsOfExperience: number;
+    yearsOfExperience?: number;
     location: string;
     [key: string]: any; // Allows any additional attribute
 }
@@ -25,12 +25,12 @@ class Teacher {
     }
 }
 
-const teacher3: Teacher = {
+const teacher3 = new Teacher ({
     firstName: 'John',
     fullTimeEmployee: false,
     lastName: 'Doe',
     location: 'London',
     contract: false,
-  };
+  });
   
   console.log(teacher3);
